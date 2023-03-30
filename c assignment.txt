@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+int main() {
+    /*declaring an array*/	
+    int bank[3];
+    int amount;
+    int oldbalance = bank[2];
+    /*declaring a pointer to the balance idex*/
+    int* newbalance = &bank[2];
+    char choice2;
+    
+/*making the process endless*/
+    for(int i=1;i>=1;i++)
+{
+    start: /*setting up a goto statement*/
+    printf("press Ctrl+c if you want to exit");/*showing an exit path to the endless loop*/
+    printf("\nPlease choose what you want to do:\n A: Deposit \n B: Withdraw\n"); 
+    scanf("%c", &choice2);
+    switch(choice2){
+        case 'A': 
+    printf("How much do you want to deposit?\n");
+    scanf("%d", &amount);
+    bank[0] = amount;
+    bank[2] = amount + oldbalance; 
+    printf("Your new bank balance is: %d", *newbalance);
+    goto start;
+    break;
+        case 'B': 
+    printf("How much do you want to withdraw?\n");
+    scanf("%d", &amount);
+    bank[1] = amount;
+    bank[2] = amount - oldbalance; 
+    printf("Your new bank balance is: %d", *newbalance);
+    goto start;
+    break;
+    default:printf("\nyour choice is invalid"); goto start;
+    }
+    
+}
+    
+    return 0;
+}
